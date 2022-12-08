@@ -1,0 +1,7 @@
+unit_measure,data_last_update,var
+PT,2022-03-23,eg_acs_elec
+PT,2022-03-18,eg_egy_clean
+MJ_PER_GDP_CON_PPP_USD,2022-03-30,eg_egy_prim
+W_PER_CAPITA,2022-03-23,eg_egy_rnew
+PT,2022-02-16,eg_fec_rnew
+CON_USD,2022-03-23,eg_iff_randn

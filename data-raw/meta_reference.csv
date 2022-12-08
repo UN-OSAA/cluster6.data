@@ -1,0 +1,16 @@
+var,description
+region_id,Region/Continent Code
+region,Region/Continent Name
+region_sub_id,Sub-region Code
+region_sub,Sub-region Name
+region_int_id,Intermediate Region Code
+region_int,Intermediate Region Name
+ldc,Least Developed Countries (LDC)
+lldc,Land Locked Developing Countries (LLDC)
+sids,Small Island Developing States (SIDS)
+country,Country or Area
+m49c,M49 Code
+iso2c,ISO-alpha2 Code
+iso3c,ISO-alpha3 Code
+income,World Bank Income-level Classification
+lending,World Bank Lending Group

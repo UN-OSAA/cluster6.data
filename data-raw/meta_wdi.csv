@@ -1,0 +1,32 @@
+var,description
+iso2c,iso2c Code
+iso3c,iso3c Code
+year,year
+electricity_access,Access to electricity (% of population)
+alternative_energy,Alternative and nuclear energy (% of total energy use)
+electricity_consumption,Electric power consumption (kWh per capita)
+energy_imports,"Energy imports, net (% of energy use)"
+energy_intensity,Energy intensity level of primary energy (MJ/$2017 PPP GDP)
+energy_use,Energy use (kg of oil equivalent per capita)
+fossil_fuel_consumption,Fossil fuel energy consumption (% of total)
+fuel_exports,Fuel exports (% of merchandise exports)
+energy_unit_use_gdp,GDP per unit of energy use (constant 2017 PPP $ per kg of oil equivalent)
+ores_metal_exports,Ores and metals exports (% of merchandise exports)
+renewable_electricity_output,Renewable electricity output (% of total electricity output)
+renewable_energy_consumption,Renewable energy consumption (% of total final energy consumption)
+resources_rents,Total natural resources rents (% of GDP)
+electricity_access_ru,"Access to electricity, rural (% of rural population)"
+electricity_access_ur,"Access to electricity, urban (% of urban population)"
+region_id,Region/Continent Code
+region,Region/Continent Name
+region_sub_id,Sub-region Code
+region_sub,Sub-region Name
+region_int_id,Intermediate Region Code
+region_int,Intermediate Region Name
+ldc,Least Developed Countries (LDC)
+lldc,Land Locked Developing Countries (LLDC)
+sids,Small Island Developing States (SIDS)
+country,Country or Area
+m49c,M49 Code
+income,World Bank Income-level Classification
+lending,World Bank Lending Group
