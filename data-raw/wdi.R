@@ -49,15 +49,38 @@ raw_query <- WDI( # wdi_energy_raw
 # process WDI data
 wdi <- raw_query |>
   left_join(reference, by = c("iso2c","iso3c")) |>
+  filter(region == "Africa") |>
+  select(-c(region_id, region, region_sub_id,region_int_id)) |>
   mutate(
     year = structure(year, label = "year"),
     m49c = structure(m49c, label = "M49 Code"),
     iso2c = structure(iso2c, label = "iso2c Code"),
-    iso3c = structure(iso3c, label = "iso3c Code")
+    iso3c = structure(iso3c, label = "iso3c Code"),
+    # Reference columns
+    region_sub = structure(region_sub, label = "Sub-region Name"),
+    region_int = structure(region_int, label = "Intermediate Region Name"),
+    ldc = structure(ldc, label = "Least Developed Countries (LDC)"),
+    lldc = structure(lldc, label = "Land Locked Developing Countries (LLDC)"),
+    sids = structure(sids, label = "Small Island Developing States (SIDS)"),
+    income = structure(income, label = "World Bank Income-level Classification"),
+    lending = structure(lending, label = "World Bank Lending Group"),
+  ) |>
+  relocate(
+    ldc,
+    lldc,
+    sids,
+    income,
+    lending,
+    iso2c,
+    iso3c,
+    m49c,
+    region_sub,
+    region_int,
+    country,
+    year
   )
 
 # catalog
-
 meta_wdi <- wdi |>
   filter(country == "Algeria", year == 2000) |>
   rowid_to_column("index") |>

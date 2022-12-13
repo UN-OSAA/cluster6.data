@@ -22,7 +22,25 @@ raw_query <- readSDMX(query) |> as.data.frame()
 sdg7 <- raw_query |>
   mutate(m49c = as.numeric(REF_AREA)) |>
   inner_join(reference) |>
-  select(REF_AREA, obsTime, SERIES, obsValue, UNIT_MEASURE, DATA_LAST_UPDATE, URBANISATION, COMPOSITE_BREAKDOWN) |>
+  filter(region == "Africa") |>
+  select(
+    region_sub,
+    region_int,
+    ldc,
+    lldc,
+    sids,
+    country,
+    income,
+    lending,
+    REF_AREA,
+    obsTime,
+    SERIES,
+    obsValue,
+    UNIT_MEASURE,
+    DATA_LAST_UPDATE,
+    URBANISATION,
+    COMPOSITE_BREAKDOWN
+  ) |>
   clean_names() |>
   mutate(
     year = as.numeric(obs_time),
@@ -42,6 +60,15 @@ sdg7 <- raw_query |>
   mutate(
     m49c = structure(m49c, label = "M49 Code"),
     year = structure(year, label = "year"),
+    # Reference columns
+    region_sub = structure(region_sub, label = "Sub-region Name"),
+    region_int = structure(region_int, label = "Intermediate Region Name"),
+    ldc = structure(ldc, label = "Least Developed Countries (LDC)"),
+    lldc = structure(lldc, label = "Land Locked Developing Countries (LLDC)"),
+    sids = structure(sids, label = "Small Island Developing States (SIDS)"),
+    income = structure(income, label = "World Bank Income-level Classification"),
+    lending = structure(lending, label = "World Bank Lending Group"),
+    # SDG7 columns
     eg_egy_prim  = structure(eg_egy_prim, label = "Energy intensity level of primary energy [7.3.1]"),
     eg_egy_clean = structure(eg_egy_clean, label = "Proportion of population with primary reliance on clean fuels and technology [7.1.2]"),
     eg_fec_rnew  = structure(eg_fec_rnew, label = "Renewable energy share in the total final energy consumption [7.2.1]"),
@@ -66,6 +93,18 @@ sdg7 <- raw_query |>
     eg_iff_randn_bioenergy = structure(eg_iff_randn_bioenergy, label = "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems [7.a.1], bioenergy"),
     eg_iff_randn_hydropower = structure(eg_iff_randn_hydropower, label = "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems [7.a.1], hydropower"),
     eg_iff_randn_geothermal = structure(eg_iff_randn_geothermal, label = "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems [7.a.1], geothermal")
+  ) |>
+  relocate(
+    ldc,
+    lldc,
+    sids,
+    income,
+    lending,
+    m49c,
+    region_sub,
+    region_int,
+    country,
+    year
   )
 
 # catalog
@@ -77,7 +116,7 @@ meta_sdg7_extra <- raw_query |>
   select(-series)
 
 meta_sdg7 <- sdg7 |>
-  filter(m49c == 4, year == 2000) |>
+  filter(m49c == 12, year == 2000) |>
   rowid_to_column("index") |>
   mutate(across(everything(), ~as.character(.x))) |>
   pivot_longer(cols = -index, names_to = "var", values_drop_na = TRUE) |>

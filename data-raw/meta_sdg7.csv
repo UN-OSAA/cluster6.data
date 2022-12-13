@@ -1,14 +1,20 @@
 var,description
+region_sub,Sub-region Name
+region_int,Intermediate Region Name
+ldc,Least Developed Countries (LDC)
+lldc,Land Locked Developing Countries (LLDC)
+sids,Small Island Developing States (SIDS)
+country,Country or Area
+income,World Bank Income-level Classification
+lending,World Bank Lending Group
 year,year
 m49c,M49 Code
 eg_acs_elec_t,"Proportion of population with access to electricity [7.1.1], total"
+eg_acs_elec_r,"Proportion of population with access to electricity [7.1.1], rural"
 eg_acs_elec_u,"Proportion of population with access to electricity [7.1.1, urban]"
-eg_egy_clean,Proportion of population with primary reliance on clean fuels and technology [7.1.2]
 eg_egy_prim,Energy intensity level of primary energy [7.3.1]
 eg_egy_rnew_t,"Installed renewable electricity-generating capacity (watts per capita) [7.b.1, 12.a.1], total"
 eg_egy_rnew_hydropower,"Installed renewable electricity-generating capacity (watts per capita) [7.b.1, 12.a.1], hydropower"
 eg_egy_rnew_solar,"Installed renewable electricity-generating capacity (watts per capita) [7.b.1, 12.a.1], solar"
 eg_egy_rnew_wind,"Installed renewable electricity-generating capacity (watts per capita) [7.b.1, 12.a.1], wind"
 eg_fec_rnew,Renewable energy share in the total final energy consumption [7.2.1]
-eg_iff_randn_t,"International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems [7.a.1], total"
-eg_iff_randn_hydropower,"International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems [7.a.1], hydropower"
