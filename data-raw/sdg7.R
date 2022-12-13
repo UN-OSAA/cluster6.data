@@ -14,7 +14,15 @@ load("data/reference.rda")
 ########## LOAD RAW DATA (E)
 
 query <- 'https://data.un.org/ws/rest/data/IAEG-SDGs,DF_SDG_GLH,1.10/..EG_ACS_ELEC+EG_EGY_CLEAN+EG_FEC_RNEW+EG_EGY_PRIM+EG_IFF_RANDN+EG_EGY_RNEW.1+2+15+12+434+504+729+788+818+202+11+132+178+204+270+288+324+384+430+466+478+562+566+624+654+686+694+768+854+14+108+174+175+231+232+262+404+450+454+480+508+638+646+690+706+716+728+800+834+894+17+24+120+140+148+180+226+266+678+18+72+426+516+710+748+9+53+36+554+54+90+242+540+548+598+57+296+316+520+580+583+584+585+61+16+184+258+570+772+776+798+876+882+543+19+21+60+124+304+666+840+419+5+32+68+76+152+170+218+238+254+328+600+604+740+858+862+13+84+188+222+320+340+484+558+591+29+28+44+52+92+136+192+212+214+308+312+332+388+474+500+531+533+534+535+630+652+659+660+662+663+670+780+796+850+62+142+30+156+158+344+392+408+410+446+496+34+4+50+64+144+356+364+462+524+586+35+96+104+116+360+418+458+608+626+702+704+764+143+398+417+762+795+860+145+31+48+51+196+268+275+368+376+400+414+422+512+634+682+760+784+792+887+150+39+8+20+70+191+292+300+380+470+499+620+674+688+705+724+807+151+100+112+203+348+412+498+616+642+643+703+804+154+208+233+234+246+352+372+428+440+578+752+826+830+831+832+833+155+40+56+250+276+438+442+492+528+756+513+747+753+135+199+432+485+514+515+518+722+738+746+99036+99037+99038+99039+99040+99049..._T+U+R....._T+TRT_BIOENERGY+TRT_GEOTHERMAL+TRT_MARINE+TRT_MULTIPLE+TRT_HYDROPOWER+TRT_SOLAR+TRT_WIND.../ALL/?detail=full&startPeriod=2000-01-01&endPeriod=2020-12-31&dimensionAtObservation=TIME_PERIOD'
-raw_query <- readSDMX(query) |> as.data.frame()
+raw_query_func <- function(source = "saved"){
+  if(source == "saved"){
+    read_csv(here("data-raw/query_sdg7_2022-12-07.csv"))
+  } else{
+    readSDMX(query) |> as_data_frame()
+  }
+}
+
+raw_query <- raw_query_func()
 
 ########## PROCESS RAW DATA (T)
 
@@ -128,5 +136,13 @@ fwrite(sdg7, here("data/sdg7.csv"))
 save(sdg7, file = "data/sdg7.rda")
 fwrite(meta_sdg7, here("data-raw/meta_sdg7.csv"))
 fwrite(meta_sdg7_extra, here("data-raw/meta_sdg7_extra.csv"))
-fwrite(raw_query, here(paste0("data-raw/query_sdg7_",Sys.Date(),".csv")))
 
+raw_query_save <- function(source = "saved"){
+  if(source == "saved"){
+    fwrite(raw_query, here("data-raw/query_sdg7_2022-12-07.csv"))
+  }else{
+    fwrite(raw_query, here(paste0("data-raw/query_sdg7_",Sys.Date(),".csv")))
+  }
+}
+
+raw_query_save()

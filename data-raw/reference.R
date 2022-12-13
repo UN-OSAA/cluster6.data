@@ -23,7 +23,7 @@ raw_wdi <- WDI("NY.GDP.MKTP.CD", country='all', start=2021, end=2021, extra = TR
 # Construct reference dataset
 reference <- raw_unsd |>
   mutate(
-    across(`Least Developed Countries (LDC)`:`Small Island Developing States (SIDS)`, ~ifelse(is.na(.x), "0", "1")),
+    across(`Least Developed Countries (LDC)`:`Small Island Developing States (SIDS)`, ~ifelse(is.na(.x), "No", "Yes")),
     across(c(`Region Name`,`Sub-region Name`), ~ifelse((is.na(.x) & `Country or Area`=="Antarctica"), "Antarctica", .x)),
     across(c(`Region Code`,`Sub-region Code`), ~ifelse((is.na(.x) & `Country or Area`=="Antarctica"), "999", .x)),
     `Intermediate Region Name` = ifelse(!is.na(`Intermediate Region Name`),`Intermediate Region Name`, `Sub-region Name`),
@@ -36,6 +36,7 @@ reference <- raw_unsd |>
     "iso3c" = `ISO-alpha3 Code`
   ) |>
   left_join(raw_wdi, by = c("iso2c", "iso3c")) |>
+  mutate(across(c(income,lending),~as_factor(.x))) |>
   transmute(
     region_id = structure(`Region Code`, label = "Region/Continent Code"),
     region = structure(`Region Name`, label = "Region/Continent Name"),

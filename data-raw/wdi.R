@@ -37,12 +37,15 @@ ind_list_energy <- c(
   'electricity_access_ur'='EG.ELC.ACCS.UR.ZS'
 )
 
-raw_query <- WDI( # wdi_energy_raw
-  indicator=ind_list_energy,
-  country='all',
-  start=2000,
-  end=2020
-)|> select(-country)
+raw_query_func <- function(source = "saved"){
+  if(source == "saved"){
+    read_csv(here("data-raw/query_wdi_2022-12-07.csv"))
+  } else{
+    WDI( indicator=ind_list_energy, country='all', start=2000, end=2020)|> select(-country)
+  }
+}
+
+raw_query <- raw_query_func()
 
 ########## PROCESS RAW DATA (T)
 
@@ -64,6 +67,24 @@ wdi <- raw_query |>
     sids = structure(sids, label = "Small Island Developing States (SIDS)"),
     income = structure(income, label = "World Bank Income-level Classification"),
     lending = structure(lending, label = "World Bank Lending Group"),
+    # WDI Columns
+    electricity_access = structure(electricity_access, label = 'Access to electricity (% of population)'),
+    alternative_energy = structure(alternative_energy, label = 'Alternative and nuclear energy (% of total energy use)'),
+    electricity_consumption = structure(electricity_consumption, label = 'Electric power consumption (kWh per capita)'),
+    energy_imports = structure(energy_imports, label = 'Energy imports, net (% of energy use)'),
+    energy_intensity = structure(energy_intensity, label = 'Energy intensity level of primary energy (MJ/$2017 PPP GDP)'),
+    energy_use = structure(energy_use, label = 'Energy use (kg of oil equivalent per capita)'),
+    fossil_fuel_consumption = structure(fossil_fuel_consumption, label = 'Fossil fuel energy consumption (% of total)'),
+    fuel_exports = structure(fuel_exports, label = 'Fuel exports (% of merchandise exports)'),
+    energy_unit_use_gdp = structure(energy_unit_use_gdp, label = 'GDP per unit of energy use (constant 2017 PPP $ per kg of oil equivalent)'),
+    energy_investment_private = structure(energy_investment_private, label = 'Investment in energy with private participation (current US$)'),
+    ores_metal_exports = structure(ores_metal_exports, label = 'Ores and metals exports (% of merchandise exports)'),
+    renewable_electricity_output = structure(renewable_electricity_output, label = 'Renewable electricity output (% of total electricity output)'),
+    renewable_energy_consumption = structure(renewable_energy_consumption, label = 'Renewable energy consumption (% of total final energy consumption)'),
+    time_electricity = structure(time_electricity, label = 'Time required to get electricity (days)'),
+    resources_rents = structure(resources_rents, label = 'Total natural resources rents (% of GDP)'),
+    electricity_access_ru = structure(electricity_access_ru, label = 'Access to electricity, rural (% of rural population)'),
+    electricity_access_ur = structure(electricity_access_ur, label = 'Access to electricity, urban (% of urban population)')
   ) |>
   relocate(
     ldc,
@@ -93,4 +114,13 @@ meta_wdi <- wdi |>
 fwrite(wdi, here("data/wdi.csv"))
 save(wdi, file = "data/wdi.rda")
 fwrite(meta_wdi, here("data-raw/meta_wdi.csv"))
-fwrite(raw_query, here(paste0("data-raw/query_wdi_",Sys.Date(),".csv")))
+
+raw_query_save <- function(source = "saved"){
+  if(source == "saved"){
+    fwrite(raw_query, here("data-raw/query_wdi_2022-12-07.csv"))
+  }else{
+    fwrite(raw_query, here(paste0("data-raw/query_wdi_",Sys.Date(),".csv")))
+  }
+}
+
+raw_query_save()
