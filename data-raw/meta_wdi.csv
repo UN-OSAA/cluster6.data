@@ -12,6 +12,8 @@ region_int,Intermediate Region Name
 country,Country or Area
 year,year
 electricity_access,Access to electricity (% of population)
+electricity_access_ru,"Access to electricity, rural (% of rural population)"
+electricity_access_ur,"Access to electricity, urban (% of urban population)"
 alternative_energy,Alternative and nuclear energy (% of total energy use)
 electricity_consumption,Electric power consumption (kWh per capita)
 energy_imports,"Energy imports, net (% of energy use)"
@@ -24,5 +26,3 @@ ores_metal_exports,Ores and metals exports (% of merchandise exports)
 renewable_electricity_output,Renewable electricity output (% of total electricity output)
 renewable_energy_consumption,Renewable energy consumption (% of total final energy consumption)
 resources_rents,Total natural resources rents (% of GDP)
-electricity_access_ru,"Access to electricity, rural (% of rural population)"
-electricity_access_ur,"Access to electricity, urban (% of urban population)"

@@ -98,7 +98,10 @@ wdi <- raw_query |>
     region_sub,
     region_int,
     country,
-    year
+    year,
+    electricity_access,
+    electricity_access_ru,
+    electricity_access_ur
   )
 
 # catalog
