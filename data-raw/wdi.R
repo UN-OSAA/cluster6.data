@@ -91,6 +91,6 @@ meta_wdi <- wdi |>
 
 ######### SAVE PROCESSED DATA (L)
 fwrite(wdi, here("data/wdi.csv"))
-saveRDS(wdi, here("data/wdi.rda"))
+save(wdi, file = "data/wdi.rda")
 fwrite(meta_wdi, here("data-raw/meta_wdi.csv"))
 fwrite(raw_query, here(paste0("data-raw/query_wdi_",Sys.Date(),".csv")))

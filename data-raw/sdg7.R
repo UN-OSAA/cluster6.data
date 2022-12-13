@@ -125,7 +125,7 @@ meta_sdg7 <- sdg7 |>
 
 ######### SAVE PROCESSED DATA (L)
 fwrite(sdg7, here("data/sdg7.csv"))
-saveRDS(sdg7, here("data/sdg7.rda"))
+save(sdg7, file = "data/sdg7.rda")
 fwrite(meta_sdg7, here("data-raw/meta_sdg7.csv"))
 fwrite(meta_sdg7_extra, here("data-raw/meta_sdg7_extra.csv"))
 fwrite(raw_query, here(paste0("data-raw/query_sdg7_",Sys.Date(),".csv")))
