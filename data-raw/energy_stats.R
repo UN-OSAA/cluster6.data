@@ -62,8 +62,7 @@ query1 <- query1_raw |>
     transaction = str_remove(transaction, "Electricity generating capacity - "),
   ) |>
   separate(transaction, c("transaction","producers"), sep = ",", remove = TRUE) |>
-  mutate(producers = str_trim(producers, side = "both")) |>
-  rename(m49c = ref_area)
+  mutate(producers = str_trim(producers, side = "both"))
 
 ######## Query 2
 
@@ -124,15 +123,32 @@ query2 <- query2_raw |>
     ),
     transaction = str_remove(transaction, "Production from "),
   ) |>
-  rename(m49c = ref_area) |>
   relocate(producers, .after = transaction)
 
 ####### Complete and processed
-en_stats <- query1 |> bind_rows(query2) |>
+en_stats <- query1 |>
+  bind_rows(query2) |>
+  rename(
+    m49c = ref_area,
+    year = obs_time,
+    value = obs_value
+  ) |>
   mutate(m49c = as.numeric(m49c)) |>
   mutate(across(commodity:producers, ~as_factor(.x))) |>
   na_if('') |>
-  left_join(reference)
+  left_join(reference) |>
+  relocate(
+    ldc,
+    lldc,
+    sids,
+    income,
+    lending,
+    m49c,
+    region_sub,
+    region_int,
+    country,
+    year
+  )
 
 ####### Metadata
 meta_en_stats <- en_stats |>
