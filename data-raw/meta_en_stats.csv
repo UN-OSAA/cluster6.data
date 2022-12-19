@@ -1,0 +1,25 @@
+commodity,label,transaction,producers,n
+EC,"Electricity, net installed capacity of electric power plants",Hydro,Main activity producers,3232
+EC,"Electricity, net installed capacity of electric power plants",Hydro,Autoproducers,1190
+EC,"Electricity, net installed capacity of electric power plants",Combustible Fuels,Main activity producers,4632
+EC,"Electricity, net installed capacity of electric power plants",Combustible Fuels,Autoproducers,3118
+EC,"Electricity, net installed capacity of electric power plants",Solar Thermal,Main activity producers,37
+EC,"Electricity, net installed capacity of electric power plants",Solar Thermal,Autoproducers,1
+EC,"Electricity, net installed capacity of electric power plants",Solar PV,Main activity producers,410
+EC,"Electricity, net installed capacity of electric power plants",Solar PV,Autoproducers,249
+Thermal Electricity,Total Electricity Production,hard coal,,1499
+Thermal Electricity,Total Electricity Production,gas oil/diesel oil,,3464
+Thermal Electricity,Total Electricity Production,fuel oil,,2480
+Thermal Electricity,Total Electricity Production,other oil products,,1592
+Thermal Electricity,Total Electricity Production,natural gas,,2261
+Thermal Electricity,Total Electricity Production,non-renewable waste,,861
+Thermal Electricity,Total Electricity Production,renewable municipal waste,,703
+Thermal Electricity,Total Electricity Production,solid biofuels,,1896
+Thermal Electricity,Total Electricity Production,liquid biofuels,,251
+Thermal Electricity,Total Electricity Production,manufactured gases,,728
+Thermal Electricity,Total Electricity Production,biogases,,1036
+Thermal Electricity,Total Electricity Production,solid coal products,,218
+Thermal Electricity,Total Electricity Production,brown coal,,739
+Thermal Electricity,Total Electricity Production,crude oil,,231
+Thermal Electricity,Total Electricity Production,oil shale,,43
+Thermal Electricity,Total Electricity Production,peat,,173
