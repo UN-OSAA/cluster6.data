@@ -41,7 +41,7 @@ raw_query_func <- function(source = "saved"){
   if(source == "saved"){
     read_csv(here("data-raw/query_wdi_2022-12-07.csv"))
   } else{
-    WDI( indicator=ind_list_energy, country='all', start=2000, end=2020)|> select(-country)
+    WDI(indicator=ind_list_energy, country='all', start=2000, end=2020)|> select(-country)
   }
 }
 

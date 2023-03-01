@@ -40,7 +40,7 @@ region_id,region,region_sub_id,region_sub,region_int_id,region_int,ldc,lldc,sids
 002,Africa,202,Sub-Saharan Africa,018,Southern Africa,No,Yes,No,Botswana,72,BW,BWA,Upper middle income,IBRD
 002,Africa,202,Sub-Saharan Africa,018,Southern Africa,No,Yes,No,Eswatini,748,SZ,SWZ,Lower middle income,IBRD
 002,Africa,202,Sub-Saharan Africa,018,Southern Africa,Yes,Yes,No,Lesotho,426,LS,LSO,Lower middle income,IDA
-002,Africa,202,Sub-Saharan Africa,018,Southern Africa,No,No,No,Namibia,516,,NAM,,
+002,Africa,202,Sub-Saharan Africa,018,Southern Africa,No,No,No,Namibia,516,NA,NAM,Upper middle income,IBRD
 002,Africa,202,Sub-Saharan Africa,018,Southern Africa,No,No,No,South Africa,710,ZA,ZAF,Upper middle income,IBRD
 002,Africa,202,Sub-Saharan Africa,011,Western Africa,Yes,No,No,Benin,204,BJ,BEN,Lower middle income,IDA
 002,Africa,202,Sub-Saharan Africa,011,Western Africa,Yes,Yes,No,Burkina Faso,854,BF,BFA,Low income,IDA

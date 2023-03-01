@@ -11,7 +11,10 @@ pacman::p_load(
 ########## LOAD RAW DATA (E)
 
 # UNSD Methodology data from: https://unstats.un.org/unsd/methodology/m49/overview/
-raw_unsd <- read_csv2(here("data-raw/UNSD_Methodology.csv"))
+raw_unsd <- read_csv2(here("data-raw/UNSD_Methodology.csv")) |>
+  mutate(
+    `ISO-alpha2 Code` = replace(`ISO-alpha2 Code`,`Country or Area`=="Namibia","NA")
+  )
 
 # World Bank WDI data
 raw_wdi <- WDI("NY.GDP.MKTP.CD", country='all', start=2021, end=2021, extra = TRUE) |>
@@ -54,6 +57,7 @@ reference <- raw_unsd |>
     income = structure(income, label = "World Bank Income-level Classification"),
     lending = structure(lending, label = "World Bank Lending Group")
   )
+
 
 # catalog
 meta_reference <- reference |>
